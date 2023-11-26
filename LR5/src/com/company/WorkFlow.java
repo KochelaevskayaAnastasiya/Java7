@@ -230,4 +230,9 @@ public class WorkFlow {
         return animal;*/
     }
 
+    static Animal Animal_sync (Animal i)
+    {
+        return new SynchronizedAnimal(i);
+    }
+
 }

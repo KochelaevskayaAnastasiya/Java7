@@ -12,6 +12,8 @@ public interface Animal {
 
     int getOneScore(int k);
 
+    void setOneScore(int k, int sco);
+
     int totalScore();
 
     void output(OutputStream var1) throws Exception;

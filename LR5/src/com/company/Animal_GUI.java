@@ -431,5 +431,4 @@ public class Animal_GUI extends JFrame {
             }
         }
     }
-
 }

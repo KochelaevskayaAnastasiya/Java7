@@ -23,6 +23,22 @@ public class Dog implements Animal, Serializable {
             throw new ExceptionInput(exc.getMessage());
         }
     }
+    public Dog(int score_l, String name, double weight) {
+        try {
+            if (weight<=0) throw new ExceptionInput("Вес не может быть отрицательным или равным нулю");
+            this.score = new int[score_l];
+            for (int i=0;i<score_l;i++)
+            {
+                this.score[i]=0;
+            }
+            this.name = name;
+            this.weight = weight;
+        }
+        catch (ExceptionInput exc)
+        {
+            throw new ExceptionInput(exc.getMessage());
+        }
+    }
 
 
     public Dog() {
@@ -44,6 +60,13 @@ public class Dog implements Animal, Serializable {
         try {
             if (k>=score.length) throw new ExceptionMas();
             return score[k];
+        } catch (Exception e) {
+            throw new RuntimeException(e.getMessage());
+        }
+    }
+    public void setOneScore(int k, int sco) {
+        try {
+            score[k] = sco;
         } catch (Exception e) {
             throw new RuntimeException(e.getMessage());
         }
