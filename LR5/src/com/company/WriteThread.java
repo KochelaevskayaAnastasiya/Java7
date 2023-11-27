@@ -6,7 +6,7 @@ import javafx.scene.control.TextArea;
 import java.util.Random;
 
 public class WriteThread extends Thread {
-    Animal animal;
+    private Animal animal;
 
     public WriteThread(Animal animal) {
         this.animal =animal;

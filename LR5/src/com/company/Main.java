@@ -74,37 +74,20 @@ public class Main {
                         break;
                     case 3:
                         Animal animal2 = new Dog(5, "Кузя", 4.5);
-                        /*AnimalSynchronizer animalSynchronizer = new AnimalSynchronizer(animal2);
-                        SyncWrite syncWrite = new SyncWrite(animalSynchronizer);
-                        SyncRead syncRead = new SyncRead(animalSynchronizer);
-
-                        Thread writeThread = new Thread(syncWrite);
-                        Thread readThread = new Thread(syncRead);
-
-                        writeThread.start();
-                        readThread.start();
-                        Animal animal3 = WorkFlow.Animal_sync(animal2);
-                        System.out.println(animal3.getOneScore(4));
-                        //System.out.println(animal2);
-                        TimeUnit.SECONDS.sleep(1);
-                        animal3 = WorkFlow.Animal_sync(animal2);
-                        System.out.println(animal3.getOneScore(4));*/
-
-
                         Animal sync = WorkFlow.Animal_sync(animal2);
 
                         Thread setOneThread = new Thread(() -> {
                             sync.setOneScore(0,1);
-                            System.out.println("\nsetOneThread");
+                            System.out.println("\nWrite: 1 to position 0");
                         });
 
                         Thread setTwoThread = new Thread(() -> {
                             sync.setOneScore(0,2);
-                            System.out.println("\nsetTwoThread");
+                            System.out.println("\nWrite: 2 to position 0");
                         });
 
                         Thread readThread = new Thread(() -> {
-                            System.out.println("\nRead: " + sync.getOneScore(0));
+                            System.out.println("\nRead: " + sync.getOneScore(0)+" to position 0");
                         });
 
                         setOneThread.start();

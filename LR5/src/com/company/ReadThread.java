@@ -3,7 +3,7 @@ package com.company;
 import java.util.Random;
 
 public class ReadThread extends Thread {
-    Animal animal;
+    private Animal animal;
 
     public ReadThread(Animal animal) {
         this.animal =animal;
