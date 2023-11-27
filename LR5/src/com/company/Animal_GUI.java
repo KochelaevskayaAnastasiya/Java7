@@ -18,11 +18,18 @@ public class Animal_GUI extends JFrame {
     private JButton button_cat = new JButton("Добавить кошку");
     private JButton button_dog = new JButton("Добавить собаку");
 
-    private JButton button_score = new JButton("Найти одинаковые очки");
+    /*private JButton button_score = new JButton("Найти одинаковые очки");
     private JButton button_separation = new JButton("Разделить");
-    private JButton button_consol = new JButton("Перейти на консоль");
+    private JButton button_consol = new JButton("Перейти на консоль");*/
 
-    private JLabel result = new JLabel();
+    //ЛР5
+    private JButton button_task_1 = new JButton("Задание 1");
+    private JButton button_task_2 = new JButton("Задание 2");
+    private JButton button_task_3 = new JButton("Задание 3");
+
+    public TextArea res2= new TextArea();
+
+    public JLabel result = new JLabel();
 
     private JLabel all = new JLabel();
 
@@ -55,10 +62,15 @@ public class Animal_GUI extends JFrame {
         container.add(button_dog);
         container.add(all);
 
-        container.add(button_score);
+        /*container.add(button_score);
         container.add(button_separation);
-        container.add(button_consol);
+        container.add(button_consol);*/
+
+        container.add(button_task_1);
+        container.add(button_task_2);
+        container.add(button_task_3);
         container.add(result);
+        container.add(res2);
 
         layout.putConstraint(SpringLayout.WEST, label1, 30, SpringLayout.WEST, container);
         layout.putConstraint(SpringLayout.NORTH, label1, 30, SpringLayout.NORTH, container);
@@ -87,17 +99,28 @@ public class Animal_GUI extends JFrame {
         layout.putConstraint(SpringLayout.WEST, all, 30, SpringLayout.WEST, container);
         layout.putConstraint(SpringLayout.NORTH, all, 30, SpringLayout.NORTH, button_dog);
 
-        layout.putConstraint(SpringLayout.WEST, button_score, 200, SpringLayout.WEST, textField_name);
+        /*layout.putConstraint(SpringLayout.WEST, button_score, 200, SpringLayout.WEST, textField_name);
         layout.putConstraint(SpringLayout.NORTH, button_score, 30, SpringLayout.NORTH, container);
 
         layout.putConstraint(SpringLayout.WEST, button_separation, 250, SpringLayout.WEST, button_score);
         layout.putConstraint(SpringLayout.NORTH, button_separation, 30, SpringLayout.NORTH, container);
 
-        layout.putConstraint(SpringLayout.WEST, result, 250, SpringLayout.WEST, textField_weight);
-        layout.putConstraint(SpringLayout.NORTH, result, 30, SpringLayout.NORTH, button_separation);
-
         layout.putConstraint(SpringLayout.WEST, button_consol, 150, SpringLayout.WEST, button_separation);
-        layout.putConstraint(SpringLayout.NORTH, button_consol, 30, SpringLayout.NORTH, container);
+        layout.putConstraint(SpringLayout.NORTH, button_consol, 30, SpringLayout.NORTH, container);*/
+
+
+        layout.putConstraint(SpringLayout.WEST, result, 250, SpringLayout.WEST, textField_weight);
+        layout.putConstraint(SpringLayout.NORTH, result, 30, SpringLayout.NORTH, button_task_2);
+
+        //-------------------------------------------------------------------
+        layout.putConstraint(SpringLayout.WEST, button_task_1, 150, SpringLayout.WEST, textField_name);
+        layout.putConstraint(SpringLayout.NORTH, button_task_1, 30, SpringLayout.NORTH, container);
+
+        layout.putConstraint(SpringLayout.WEST, button_task_2, 150, SpringLayout.WEST, button_task_1);
+        layout.putConstraint(SpringLayout.NORTH, button_task_2, 30, SpringLayout.NORTH, container);
+
+        layout.putConstraint(SpringLayout.WEST, button_task_3, 150, SpringLayout.WEST, button_task_2);
+        layout.putConstraint(SpringLayout.NORTH, button_task_3, 30, SpringLayout.NORTH, container);
 
         String str = "<html>";
 
@@ -114,15 +137,67 @@ public class Animal_GUI extends JFrame {
         ActionListener listener_dog = new CreateDogListner();
         button_dog.addActionListener(listener_dog);
 
-        ActionListener listener_score = new CreateScoreListner();
+        /*ActionListener listener_score = new CreateScoreListner();
         button_score.addActionListener(listener_score);
 
         ActionListener listener_separation = new CreateSeparationListner();
         button_separation.addActionListener(listener_separation);
 
         ActionListener listener_console = new ConsolListner();
-        button_consol.addActionListener(listener_console);
+        button_consol.addActionListener(listener_console);*/
 
+        //------------------
+        ActionListener listener_task_1 = new CreateTask1();
+        button_task_1.addActionListener(listener_task_1);
+
+        ActionListener listener_task_2 = new CreateTask2();
+        button_task_2.addActionListener(listener_task_2);
+
+        ActionListener listener_task_3 = new CreateTask3();
+        button_task_3.addActionListener(listener_task_3);
+
+    }
+    public class CreateTask1 implements ActionListener{
+        public void actionPerformed(ActionEvent e)
+        {
+            try {
+
+            }
+            catch (Exception exc)
+            {
+            }
+        }
+    }
+
+    public class CreateTask2 implements ActionListener{
+        public void actionPerformed(ActionEvent e)
+        {
+            try {
+                Animal animal = new Cat(5, "Кузя", 4.5);
+                WriteThread wh =  new WriteThread(animal);
+                //wh.setPriority(Thread.MAX_PRIORITY);
+                wh.start();
+                ReadThread rh = new ReadThread(animal);
+                //rh.setPriority(Thread.MIN_PRIORITY);
+                rh.start();
+
+            }
+            catch (Exception exc)
+            {
+            }
+        }
+    }
+
+    public class CreateTask3 implements ActionListener{
+        public void actionPerformed(ActionEvent e)
+        {
+            try {
+
+            }
+            catch (Exception exc)
+            {
+            }
+        }
     }
 
     public class CreateCatListner implements ActionListener{
