@@ -21,6 +21,4 @@ public interface Animal extends Iterable<Integer>{
 
     void write(Writer var1);
 
-    Iterator<Integer> iterator();
-
 }

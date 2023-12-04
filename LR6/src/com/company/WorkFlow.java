@@ -48,11 +48,14 @@ public class WorkFlow {
                 in.read(byte_l);
                 an[i] = ByteBuffer.wrap(byte_l).getInt();
             }
-            if (wh[0] == 0) {
+            return createInstance(name, weigth, an);
+
+            /*if (wh[0] == 0) {
                 return new Cat(an, name, weigth);
+
             } else {
                 return new Dog(an, name, weigth);
-            }
+            }*/
 
         } catch (Exception e) {
             return null;
@@ -90,11 +93,12 @@ public class WorkFlow {
                 for (int i = 0; i < rr; i++) {
                     mas[i] = Integer.parseInt(parts[u + i + 4]);
                 }
-                if (wh == 0) {
+                return createInstance(name, wei, mas);
+                /*if (wh == 0) {
                     return new Cat(mas, name, wei);
                 } else {
                     return new Dog(mas, name, wei);
-                }
+                }*/
             }
             else throw new Exception("");
         } catch (Exception e) {
@@ -159,8 +163,11 @@ public class WorkFlow {
                 for (int i = 0; i < score.length; i++) {
                     score[i] = Integer.parseInt(ani[i + 3]);
                 }
-                if (who == 0) return new Cat(score, name, weigth);
-                else return new Dog(score, name, weigth);
+                return createInstance(name, weigth, score);
+                /*if (who == 0)
+                    return new Cat(score, name, weigth);
+                else return new Dog(score, name, weigth);*/
+
             }
             else throw new ExceptionInput("Ошибка!");
         }
@@ -234,5 +241,22 @@ public class WorkFlow {
     {
         return new SynchronizedAnimal(i);
     }
+    //ЛР6
+    static Animal unmodifiableAnimal(Animal o) {return new UnmodifiableAnimal(o);}
+
+    private static FactoryAnimal factoryAnimal =  new CatFactory();
+
+    public static void setAnimal(FactoryAnimal f) {
+        factoryAnimal = f;
+    }
+
+    public static Animal createInstance() {
+        return factoryAnimal.createInstance();
+    }
+
+    public static Animal createInstance(String name, double weight, int[] score) {
+        return factoryAnimal.createInstance(name, weight, score);
+    }
+
 
 }

@@ -60,10 +60,18 @@ public class Cat implements Animal, Serializable {
 
 
     public Cat() {
-        this.score = new int[0];
-        this.name = "";
-        this.weight = 0;
+        this.score = new int[5];
+        setOneScore(0, 0);
+        setOneScore(1, 1);
+        setOneScore(2, 2);
+        setOneScore(3, 3);
+        setOneScore(4, 4);
+        this.name = "По умолчанию";
+        this.weight = 1;
         score_list = new ArrayList<>();
+        for (int i = 0; i < score.length; i++) {
+            score_list.add(score[i]);
+        }
     }
 
     public String getName() {
